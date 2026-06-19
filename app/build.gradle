@@ -23,19 +23,33 @@ repositories {
 }
 
 dependencies {
-    // Use JUnit test framework.
     testImplementation libs.junit
-
-    // This dependency is used by the application.
     implementation libs.guava
     implementation 'org.projectlombok:lombok:1.18.32'
-    annotationProcessor 'org.projectlombok:lombok:1.18.32'  // ✅ Add this line
+    annotationProcessor 'org.projectlombok:lombok:1.18.32'
     implementation 'org.mindrot:jbcrypt:0.4'
-    implementation 'org.springframework.boot:spring-boot-starter-web:3.0.0'  // or latest stable version
-    implementation 'com.fasterxml.jackson.core:jackson-databind' // for JSON mapping
-    
+
+    // Spring Boot
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+
+    // H2 for local dev (no install needed)
+    runtimeOnly 'com.h2database:h2'
+
+    // PostgreSQL driver (for production)
+    runtimeOnly 'org.postgresql:postgresql'
+
+    // JWT
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // Email
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

@@ -1,8 +1,9 @@
 # Build Stage
 FROM gradle:8.4.0-jdk17 AS builder
-WORKDIR /app
+WORKDIR /home/app
 COPY . .
-RUN cd app && gradle build --no-daemon
+WORKDIR /home/app/app
+RUN gradle build --no-daemon
 
 # Run Stage
 FROM eclipse-temurin:17-jdk-alpine

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "NIXPACKS",
+    "buildCommand": "./gradlew :app:bootJar -x test"
+  },
+  "deploy": {
+    "startCommand": "java -jar app/build/libs/app-0.0.1-SNAPSHOT.jar",
+    "healthcheckPath": "/actuator/health",
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 3
+  }
+}
