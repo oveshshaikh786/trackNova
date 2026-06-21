@@ -12,7 +12,7 @@ import ProfilePage from './pages/ProfilePage';
 import PaymentPage from './pages/PaymentPage';
 import AdminPage from './pages/AdminPage';
 import LiveJourneyPage from './pages/LiveJourneyPage';
-import { isLoggedIn, isAdmin, getCurrentUser } from './services/authService';
+import { isLoggedIn, isAdmin } from './services/authService';
 import { getAnnouncements } from './services/trainService';
 import { useState, useEffect } from 'react';
 

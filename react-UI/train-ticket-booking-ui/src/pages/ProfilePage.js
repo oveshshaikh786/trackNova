@@ -21,6 +21,7 @@ const Field = function({ label, id, value, onChange, type, placeholder }) {
 
 const ProfilePage = function() {
   var user = getStoredUser();
+  // eslint-disable-next-line no-unused-vars
   var [profile, setProfile]     = useState({});
   var [firstName, setFirstName] = useState('');
   var [lastName, setLastName]   = useState('');
@@ -45,7 +46,7 @@ const ProfilePage = function() {
       setAge(p.age || '');
       setPhone(p.phone || '');
     }).catch(function() {});
-  }, []);
+  }, [user]);
 
   var handleSave = async function(e) {
     e.preventDefault();

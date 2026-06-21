@@ -9,6 +9,7 @@ import {
 
 /* ── helpers ── */
 var fmt = function(n) { return '$' + Number(n).toLocaleString(); };
+// eslint-disable-next-line no-unused-vars
 var pct = function(b,t) { return t === 0 ? 0 : Math.round(b*100/t); };
 
 /* ── tiny shared components ── */
