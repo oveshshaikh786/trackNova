@@ -53,11 +53,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-mail'
 }
 
-// Apply a specific Java toolchain to ease working on different environments.
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
+// Disable plain jar — only bootJar should be produced
+jar {
+    enabled = false
 }
 
 application {
