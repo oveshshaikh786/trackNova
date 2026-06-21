@@ -1,0 +1,209 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   TrackNova Design System v3 — Light & Airy
+   Theme: Soft blue-white · Indigo primary · Amber gold accent
+═══════════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* ── Page backgrounds ── */
+  --tn-bg:        #f0f4ff;
+  --tn-surface:   #ffffff;
+  --tn-surface2:  #f8faff;
+  --tn-surface3:  #eef2ff;
+
+  /* ── Brand colours ── */
+  --tn-indigo:       #6366f1;
+  --tn-indigo-light: #818cf8;
+  --tn-indigo-dim:   rgba(99,102,241,0.12);
+  --tn-nova:         #f59e0b;
+  --tn-nova-hover:   #d97706;
+  --tn-nova-dim:     rgba(245,158,11,0.12);
+
+  /* ── Semantic ── */
+  --tn-green:  #10b981;
+  --tn-red:    #ef4444;
+  --tn-yellow: #f59e0b;
+
+  /* ── Text ── */
+  --tn-text:  #0f172a;
+  --tn-muted: #475569;
+  --tn-dim:   #94a3b8;
+
+  /* ── Borders ── */
+  --tn-border:  rgba(0,0,0,0.07);
+  --tn-border2: rgba(0,0,0,0.12);
+
+  /* ── Radii ── */
+  --tn-radius:    14px;
+  --tn-radius-sm: 8px;
+  --tn-radius-lg: 20px;
+
+  /* ── Shadows ── */
+  --tn-shadow:    0 4px 24px rgba(0,0,0,0.06);
+  --tn-shadow-lg: 0 16px 64px rgba(0,0,0,0.10);
+  --tn-glow-nova: 0 0 24px rgba(245,158,11,0.20);
+  --tn-glow-ind:  0 0 24px rgba(99,102,241,0.20);
+}
+
+html, body, #root {
+  min-height: 100vh;
+  background: var(--tn-bg);
+  color: var(--tn-text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Dot-grid background overlay (decorative) ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(99,102,241,0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root { position: relative; z-index: 1; }
+
+/* ════════════════════════════════════════
+   HERO SECTION
+════════════════════════════════════════ */
+.sr-hero {
+  background: linear-gradient(135deg,
+    #1e1b4b 0%, #2d1b69 40%, #1e3a8a 70%, #1e2a6b 100%);
+  position: relative;
+  overflow: hidden;
+}
+.sr-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 30% 40%, rgba(99,102,241,0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 80% 60%, rgba(245,158,11,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ════════════════════════════════════════
+   BUTTONS
+════════════════════════════════════════ */
+.sr-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: var(--tn-radius-sm);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  outline: none;
+  font-family: inherit;
+  letter-spacing: 0.01em;
+}
+.sr-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.sr-btn-gold {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #07090f;
+  box-shadow: 0 4px 20px rgba(245,158,11,0.30);
+  border-radius: 10px;
+}
+.sr-btn-gold:hover:not(:disabled) {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  box-shadow: 0 6px 28px rgba(245,158,11,0.45);
+  transform: translateY(-1px);
+}
+.sr-btn-gold:active:not(:disabled) { transform: translateY(0); }
+
+.sr-btn-indigo {
+  background: var(--tn-indigo);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(99,102,241,0.30);
+  border-radius: 10px;
+}
+.sr-btn-indigo:hover:not(:disabled) {
+  background: var(--tn-indigo-light);
+  box-shadow: 0 6px 28px rgba(99,102,241,0.45);
+  transform: translateY(-1px);
+}
+
+/* ════════════════════════════════════════
+   FORM ELEMENTS
+════════════════════════════════════════ */
+.sr-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--tn-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 7px;
+}
+
+.sr-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(0,0,0,0.03);
+  border: 1.5px solid var(--tn-border2);
+  border-radius: var(--tn-radius-sm);
+  color: var(--tn-text);
+  font-size: 0.93rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+.sr-input::placeholder { color: var(--tn-dim); }
+.sr-input:focus {
+  border-color: var(--tn-indigo);
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.12);
+}
+
+/* ════════════════════════════════════════
+   CARDS
+════════════════════════════════════════ */
+.sr-card {
+  background: var(--tn-surface);
+  border: 1px solid var(--tn-border);
+  border-radius: var(--tn-radius);
+  box-shadow: var(--tn-shadow);
+}
+
+/* ════════════════════════════════════════
+   BADGES
+════════════════════════════════════════ */
+.sr-badge-blue   { background: rgba(99,102,241,0.10); color: #4f46e5; border-radius: 6px; padding: 3px 10px; font-size: 0.72rem; font-weight: 700; }
+.sr-badge-gold   { background: rgba(245,158,11,0.10); color: #d97706; border-radius: 6px; padding: 3px 10px; font-size: 0.72rem; font-weight: 700; }
+.sr-badge-green  { background: rgba(16,185,129,0.10); color: #059669; border-radius: 6px; padding: 3px 10px; font-size: 0.72rem; font-weight: 700; }
+.sr-badge-red    { background: rgba(248,113,113,0.10); color: #dc2626; border-radius: 6px; padding: 3px 10px; font-size: 0.72rem; font-weight: 700; }
+
+/* ════════════════════════════════════════
+   ALERTS
+════════════════════════════════════════ */
+.sr-alert {
+  padding: 12px 16px;
+  border-radius: var(--tn-radius-sm);
+  font-size: 0.87rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.sr-alert-error   { background: rgba(248,113,113,0.08); color: #dc2626; border-left: 3px solid #ef4444; }
+.sr-alert-success { background: rgba(16,185,129,0.08);  color: #059669; border-left: 3px solid #10b981; }
+
+/* ════════════════════════════════════════
+   SCROLLBAR
+════════════════════════════════════════ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #e8eeff; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #6366f1; }
+
+/* ════════════════════════════════════════
+   SELECT (dark override)
+════════════════════════════════════════ */
+select.sr-input, select {
+  color-scheme: light;
+}
