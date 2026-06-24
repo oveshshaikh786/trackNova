@@ -2,7 +2,7 @@
 FROM gradle:8.7.0-jdk17 AS builder
 WORKDIR /home/app
 COPY . .
-RUN gradle -p app bootJar --no-daemon -x test
+RUN gradle :app:bootJar --no-daemon -x test
 
 # Run Stage
 FROM eclipse-temurin:17-jre-alpine
