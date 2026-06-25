@@ -1,12 +1,16 @@
-# Build Stage
-FROM gradle:8.7.0-jdk17 AS builder
+# Build Stage — use JDK image so gradlew runs as root (no permission issues)
+FROM eclipse-temurin:17-jdk-alpine AS builder
 WORKDIR /home/app
 COPY . .
-RUN gradle :app:bootJar --no-daemon -x test
+RUN chmod +x gradlew && \
+    ./gradlew :app:bootJar --no-daemon --no-configuration-cache -x test && \
+    echo "=== JAR FILES ===" && ls -la app/build/libs/ && \
+    echo "=== org/example classes in jar ===" && \
+    jar tf app/build/libs/app-0.0.1-SNAPSHOT.jar | grep "org/example" || echo "MISSING"
 
 # Run Stage
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
-COPY --from=builder /home/app/app/build/libs/*.jar app.jar
+COPY --from=builder /home/app/app/build/libs/app-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
