@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Application entry point — starts the Spring Boot REST API on port 8080.
+ * Application entry point — starts the Spring Boot REST API on port 8080. v2
  *
  * Run with:  ./gradlew bootRun
  *
