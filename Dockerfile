@@ -1,8 +1,8 @@
 # Build Stage — use JDK image so gradlew runs as root (no permission issues)
 FROM eclipse-temurin:17-jdk-alpine AS builder
 WORKDIR /home/app
+ARG CACHEBUST=3
 COPY . .
-ARG CACHEBUST=2
 RUN chmod +x gradlew && \
     ./gradlew :app:bootJar --no-daemon --no-configuration-cache -x test && \
     echo "=== JAR FILES ===" && ls -la app/build/libs/ && \
