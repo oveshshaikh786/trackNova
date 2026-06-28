@@ -50,9 +50,9 @@ const Feature = function({ icon, text }) {
 
 const LoginPage = function() {
   return (
-    <div style={pg.root}>
+    <div style={pg.root} className="tn-login-root">
       {/* ── Left hero panel ── */}
-      <div style={pg.hero}>
+      <div style={pg.hero} className="tn-login-hero">
         {/* Stars */}
         <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }} viewBox="0 0 100 100" preserveAspectRatio="none">
           {stars.map(function(s) {
@@ -87,7 +87,7 @@ const LoginPage = function() {
       </div>
 
       {/* ── Right form panel ── */}
-      <div style={pg.formPanel}>
+      <div style={pg.formPanel} className="tn-login-form">
         <LoginForm />
       </div>
     </div>

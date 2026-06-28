@@ -207,3 +207,40 @@ body::before {
 select.sr-input, select {
   color-scheme: light;
 }
+
+/* ════════════════════════════════════════
+   MOBILE RESPONSIVE
+════════════════════════════════════════ */
+
+/* Login page — stack vertically on mobile, hide hero */
+.tn-login-root  { display: flex; min-height: 100vh; }
+.tn-login-hero  { flex: 1 1 55%; }
+.tn-login-form  { flex: 0 0 440px; }
+
+@media (max-width: 768px) {
+  .tn-login-hero { display: none !important; }
+  .tn-login-form {
+    flex: 1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border-left: none !important;
+    padding: 40px 24px !important;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* Admin tabs — hide scrollbar but keep scrollable */
+.tn-admin-tabs { overflow-x: auto; -ms-overflow-style: none; scrollbar-width: none; }
+.tn-admin-tabs::-webkit-scrollbar { display: none; }
+
+/* Admin 2-col grids — stack on mobile */
+.tn-admin-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 768px) {
+  .tn-admin-grid-2 { grid-template-columns: 1fr; }
+
+  /* Tighten admin padding on mobile */
+  .tn-admin-content { padding: 16px 12px 60px !important; }
+}

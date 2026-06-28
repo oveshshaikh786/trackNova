@@ -98,7 +98,7 @@ var OverviewTab = function() {
       </div>
 
       {/* ── Revenue by fare class ── */}
-      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'20px' }}>
+      <div className="tn-admin-grid-2">
         <Card>
           <div style={{ fontSize:'0.65rem', fontWeight:'700', color:'#475569', textTransform:'uppercase', letterSpacing:'0.1em', marginBottom:'16px' }}>💺 Revenue by Fare Class</div>
           {['ECONOMY','BUSINESS','FIRST'].map(function(fc) {
@@ -139,7 +139,7 @@ var OverviewTab = function() {
       </div>
 
       {/* ── Revenue by train + Top Passengers ── */}
-      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'20px' }}>
+      <div className="tn-admin-grid-2">
         <Card>
           <div style={{ fontSize:'0.65rem', fontWeight:'700', color:'#475569', textTransform:'uppercase', letterSpacing:'0.1em', marginBottom:'14px' }}>🚆 Revenue by Train</div>
           <div style={{ display:'flex', flexDirection:'column', gap:'10px', maxHeight:'260px', overflowY:'auto' }}>
@@ -181,7 +181,7 @@ var OverviewTab = function() {
       </div>
 
       {/* ── Promo code impact + Waitlist ── */}
-      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'20px' }}>
+      <div className="tn-admin-grid-2">
         <Card>
           <div style={{ fontSize:'0.65rem', fontWeight:'700', color:'#475569', textTransform:'uppercase', letterSpacing:'0.1em', marginBottom:'14px' }}>🎟️ Promo Code Impact</div>
           {promoStats.length === 0
@@ -825,7 +825,7 @@ const AdminPage = function() {
       </div>
 
       {/* Tab bar */}
-      <div style={{ background:'rgba(255,255,255,0.9)', borderBottom:'1px solid rgba(0,0,0,0.07)', padding:'0 28px', overflowX:'auto' }}>
+      <div className="tn-admin-tabs" style={{ background:'rgba(255,255,255,0.9)', borderBottom:'1px solid rgba(0,0,0,0.07)', padding:'0 28px' }}>
         <div style={{ maxWidth:'1200px', margin:'0 auto', display:'flex', gap:'2px' }}>
           {TABS.map(function(t) {
             var active = tab === t.id;
@@ -844,7 +844,7 @@ const AdminPage = function() {
       </div>
 
       {/* Tab content */}
-      <div style={{ maxWidth:'1200px', margin:'0 auto', padding:'24px 28px 60px' }}>
+      <div className="tn-admin-content" style={{ maxWidth:'1200px', margin:'0 auto', padding:'24px 28px 60px' }}>
         <TabComponent />
       </div>
     </div>
