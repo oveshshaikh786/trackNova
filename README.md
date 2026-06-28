@@ -4,7 +4,6 @@
 Full-stack train ticket booking system with AI delay prediction, live journey narration, real-time departure boards, and a complete admin suite.
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-tracknova--pink.vercel.app-6366f1?style=for-the-badge&logo=vercel&logoColor=white)](https://tracknova-pink.vercel.app)
-[![Backend](https://img.shields.io/badge/API-Railway-0B0D0E?style=for-the-badge&logo=railway&logoColor=white)](https://web-production-b8e8e.up.railway.app/actuator/health)
 [![Java](https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://openjdk.org/projects/jdk/17/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.0-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
@@ -14,13 +13,7 @@ Full-stack train ticket booking system with AI delay prediction, live journey na
 
 ## 🌐 Live Demo
 
-| | URL |
-|--|--|
-| **Frontend** | https://tracknova-pink.vercel.app |
-| **Backend API** | https://web-production-b8e8e.up.railway.app |
-| **Health check** | https://web-production-b8e8e.up.railway.app/actuator/health |
-
-> Demo credentials — **Username:** `admin` · **Password:** `admin123`
+🔗 **[https://tracknova-pink.vercel.app](https://tracknova-pink.vercel.app)**
 
 ---
 
@@ -107,36 +100,16 @@ trackNova/
 CREATE DATABASE tracknova;
 ```
 
-Or with Docker:
-```bash
-docker run -e POSTGRES_DB=tracknova -e POSTGRES_USER=postgres \
-           -e POSTGRES_PASSWORD=postgres -p 5432:5432 postgres
-```
 
 ### 2. Backend
 
-```bash
-# Create application.properties (gitignored — never committed)
-cat > app/src/main/resources/application.properties << 'EOF'
-spring.datasource.url=jdbc:postgresql://localhost:5432/tracknova
-spring.datasource.driver-class-name=org.postgresql.Driver
-spring.datasource.username=postgres
-spring.datasource.password=postgres
-spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
-spring.jpa.hibernate.ddl-auto=update
-jwt.secret=your-secret-key-min-32-chars-change-this
-server.port=8080
-management.endpoints.web.exposure.include=health
-management.endpoint.health.show-details=never
-management.health.mail.enabled=false
-EOF
+Create `app/src/main/resources/application.properties` (gitignored — never commit it) using the keys listed in the [Environment Variables](#️-environment-variables) section below.
 
+```bash
 ./gradlew :app:bootRun
 # API runs on http://localhost:8080
-# DataSeeder auto-creates admin + 28 demo trains on first start
+# DataSeeder seeds 28 demo trains on first boot
 ```
-
-> **Default admin:** username `admin` / password `admin123`
 
 ### 3. Frontend
 
@@ -150,28 +123,6 @@ npm start
 
 ---
 
-## ⚙️ Environment Variables
-
-### Backend (Railway dashboard or `application.properties`)
-
-| Variable | Description |
-|----------|-------------|
-| `SPRING_DATASOURCE_URL` | PostgreSQL JDBC URL |
-| `SPRING_DATASOURCE_USERNAME` | DB username |
-| `SPRING_DATASOURCE_PASSWORD` | DB password |
-| `SPRING_DATASOURCE_DRIVER_CLASS_NAME` | `org.postgresql.Driver` |
-| `SPRING_JPA_DATABASE_PLATFORM` | `org.hibernate.dialect.PostgreSQLDialect` |
-| `JWT_SECRET` | JWT signing secret (min 32 chars) |
-| `PORT` | Server port (Railway injects this automatically) |
-
-### Frontend (Vercel dashboard or `.env`)
-
-| Variable | Description |
-|----------|-------------|
-| `REACT_APP_API_URL` | Backend base URL (e.g. `https://web-production-b8e8e.up.railway.app`) |
-
----
-
 ## 🌐 Deployment
 
 ### Backend → Railway
@@ -180,8 +131,7 @@ npm start
 2. Create a new Railway project → **Deploy from GitHub repo**
 3. Set builder to **Dockerfile** (already configured via `railway.json`)
 4. Add a **PostgreSQL** service in the same project
-5. Set the environment variables above in the Railway dashboard
-6. Railway auto-deploys on every push to `main`
+5. Railway auto-deploys on every push to `main`
 
 ### Frontend → Vercel
 
